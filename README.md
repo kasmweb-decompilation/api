@@ -13,3 +13,4 @@ Kasm API decompiled from 1.15.0 docker image.
 ```
 * `kasmweb/api` container just runs `kasm_server.so`
 * `kasm_server.so` is a PyInstaller binary
+* The Kasm API uses Python 3.8 bytecode
