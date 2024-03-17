@@ -11,3 +11,5 @@ Kasm API decompiled from 1.15.0 docker image.
 "-c",
 "/usr/bin/startup.sh -s /usr/bin/kasm_server.so -c /opt/kasm/current/conf/app/api.app.config.yaml -p \"--enable-admin-api --enable-client-api --enable-public-api\""],
 ```
+* `kasmweb/api` container just runs `kasm_server.so`
+* `kasm_server.so` is a PyInstaller binary
