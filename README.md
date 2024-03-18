@@ -1,5 +1,6 @@
 # api
 Kasm API decompiled from 1.15.0 docker image.
+**Note:** Some of the larger .py files (eg. model.py, public_api.py) may not be complete decompilations, but they should have most of the API code.
 
 ## Info so far:
 * Container is based off of Ubuntu Focal.
