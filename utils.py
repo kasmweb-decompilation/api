@@ -649,8 +649,9 @@ DEFAULT_FEATURES = [
  "allow_kasm_sharing",
  "login_banner",
  "usage_limit"]
-DEFAULT_EFFECTIVE_LICENSE = EffectiveLicense(limit=5, license_type=PER_CONCURRENT_KASM, licensed=False, features=DEFAULT_FEATURES, license_sku=(SKU.STANDARD.value))
 
+DEFAULT_EFFECTIVE_LICENSE = EffectiveLicense(limit=5, license_type=PER_CONCURRENT_KASM, licensed=False, features=DEFAULT_FEATURES, license_sku=(SKU.STANDARD.value))
+#DEFAULT_EFFECTIVE_LICENSE = EffectiveLicense(limit=999999, license_type=PER_CONCURRENT_KASM, licensed=True, features=DEFAULT_FEATURES, license_sku=(SKU.STANDARD.value)) # uncomment to bypass
 class LicenseHelper:
 
     def __init__(self, db, logger):
@@ -756,7 +757,6 @@ class LicenseHelper:
         return self.effective_license.license_type == PER_CONCURRENT_KASM
 
     def is_per_concurrent_kasm_ok(self):
-        # return True # uncomment to bypass
         if not self.is_licensed():
             return False
         if self.is_per_concurrent_kasm():
@@ -765,7 +765,6 @@ class LicenseHelper:
         return True
 
     def remaining_per_concurrent_kasms(self):
-        # return 999999 # uncomment to bypass
         if self.is_per_concurrent_kasm():
             kasms = self.db.get_kasms(operational_status=(SESSION_OPERATIONAL_STATUS.RUNNING.value))
             res = self.effective_license.limit - len(kasms)
@@ -777,7 +776,6 @@ class LicenseHelper:
         raise Exception("This license is not per named user")
 
     def get_limit_remaining(self):
-        # return 999999 # uncomment to bypass
         if self.is_per_concurrent_kasm():
             return self.remaining_per_concurrent_kasms()
         return self.remaining_per_named_user()
